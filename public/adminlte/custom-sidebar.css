@@ -1,0 +1,9 @@
+/* Custom active color for sidebar nav links */
+.nav-sidebar .nav-link.active {
+    background-color: #e74c3c !important; /* Example: red shade */
+    color: #fff !important;
+}
+
+.nav-sidebar .nav-link.active .nav-icon {
+    color: #fff !important;
+}

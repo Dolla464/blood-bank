@@ -1,0 +1,22 @@
+// Custom styles for governorates page
+.action-btn {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+.action-btn:hover {
+    background: #f5f5f5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.bg-warning {
+    background-color: #fff3cd !important;
+}
+.is-invalid {
+    border-color: #dc3545;
+}
