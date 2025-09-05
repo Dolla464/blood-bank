@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GovernorateController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +36,12 @@ Route::group(['prefix' => 'admin'], function (){
     Route::delete('profile/delete/{admin}', [ProfileController::class, 'destroy'])->name('admin.delete');
     //Governorate Routes
     Route::resource('governorates', GovernorateController::class)->except(['show']);
+    //City Routes
+    Route::resource('cities', CityController::class);
+    //Category Routes
+    Route::resource('categories', CategoryController::class);
+    //Post Routes
+    Route::resource('posts', PostController::class);
 });
 
 

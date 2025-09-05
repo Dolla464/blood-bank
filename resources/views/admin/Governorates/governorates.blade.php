@@ -1,27 +1,34 @@
 @extends('admin.layouts.main')
 
+@section('page_header')
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Governorates</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Home</a></li>
+                    <li class="breadcrumb-item active">Governorates</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div>
+@endsection
+
 @section('content')
     <div class="container-fluid mt-2">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <h2 class="mb-0">Governorates List</h2>
+                        <h4 class="mb-0"><i class="fas fa-map-marked-alt text-danger"></i> Governorates List</h4>
                         <button id="addGovernorateBtn" class="btn btn-success action-btn" aria-label="Add New Governorate"
                             style="background-color:#27ae60;border-color:#27ae60;" data-toggle="tooltip" title="Add New">
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
                     <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger mt-2">
-                                <ul class="mb-0">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
                         <table class="table table-bordered table-striped text-center mb-0">
                             <thead>
                                 <tr>
@@ -34,7 +41,7 @@
                                 @forelse($governorates as $governorate)
                                     <tr class="text-center">
                                         <td>{{ $governorate->id }}</td>
-                                        @if (request('edit') == $governorate->id)
+                                        @if (request('edit') == $governorate->id && !request('add'))
                                             <td colspan="2">
                                                 <form
                                                     action="{{ route('governorates.update', $governorate->id) }}?page={{ request()->query('page', 1) }}"
@@ -45,9 +52,7 @@
                                                         class="form-control mr-2" required>
                                                     <button type="button"
                                                         class="btn btn-sm btn-success save-btn action-btn"
-                                                        aria-label="Save Governorate"
-                                                        style="background-color:#e74c3c;border-color:#e74c3c;"
-                                                        data-toggle="tooltip" title="Save">
+                                                        aria-label="Save Governorate" data-toggle="tooltip" title="Save">
                                                         <i class="fas fa-check"></i>
                                                     </button>
                                                     <a href="{{ route('governorates.index', array_merge(request()->query(), ['edit' => null])) }}"
@@ -62,7 +67,12 @@
                                         @else
                                             <td>{{ $governorate->name }}</td>
                                             <td>
-                                                <a href="{{ route('governorates.index', array_merge(['edit' => $governorate->id], request()->query())) }}"
+                                                @php
+                                                    $query = request()->query();
+                                                    unset($query['add']); // شيل add=new من الرابط
+                                                @endphp
+
+                                                <a href="{{ route('governorates.index', array_merge(['edit' => $governorate->id], $query)) }}"
                                                     class="btn btn-sm btn-primary edit-btn action-btn"
                                                     aria-label="Edit Governorate"
                                                     style="background-color:#3498db;border-color:#3498db;"
@@ -155,13 +165,14 @@
             document.getElementById('addGovernorateBtn').addEventListener('click', function() {
                 // Redirect to last page with ?add=new
                 const url = new URL(window.location.href);
+                url.searchParams.delete('edit'),
                 url.searchParams.set('page', {{ $governorates->lastPage() }});
                 url.searchParams.set('add', 'new');
                 window.location.href = url.toString();
             });
 
             // Show new row for adding only if ?add=new is present and on last page
-            @if (request('add') == 'new' && session('success') == null && $governorates->currentPage() == $governorates->lastPage())
+            @if (request('add') == 'new' && !request('edit') && session('success') == null && $governorates->currentPage() == $governorates->lastPage())
                 document.addEventListener('DOMContentLoaded', function() {
                     if (document.getElementById('newGovernorateRow')) return;
                     let tbody = document.getElementById('governoratesTableBody');

@@ -75,10 +75,32 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('cities.*') ? 'active' : '' }}">
+                    <a href="{{ route('cities.index') }}"
+                     class="nav-link {{ request()->routeIs('cities.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
                             Cities
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('categories.index') }}"
+                     class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>
+                            Categories
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('posts.index') }}"
+                     class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>
+                            Posts
                             {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>

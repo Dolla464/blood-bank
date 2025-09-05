@@ -1,9 +1,9 @@
-// Custom styles for governorates page
+/* // Custom styles for governorates page */
 .action-btn {
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    padding: 0;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
