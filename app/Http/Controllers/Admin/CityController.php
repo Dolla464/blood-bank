@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:read cities', ['only' => ['index']]);
+        $this->middleware('can:create cities', ['only' => ['create', 'store']]);
+        $this->middleware('can:update cities', ['only' => ['edit', 'update']]);
+        $this->middleware('can:delete cities', ['only' => ['destroy']]);
+    }
+    
     public function index(Request $request)
     {
         $query = City::with('governorate');

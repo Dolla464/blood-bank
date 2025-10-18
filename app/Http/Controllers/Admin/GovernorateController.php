@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class GovernorateController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:read governorates', ['only' => ['index']]);
+        $this->middleware('can:create governorates', ['only' => ['create', 'store']]);
+        $this->middleware('can:update governorates', ['only' => ['edit', 'update']]);
+        $this->middleware('can:delete governorates', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         // Fetch governorates directly from the model

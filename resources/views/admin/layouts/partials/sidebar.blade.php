@@ -63,6 +63,46 @@
                                 </li>
                             </ul>
                         </li> --}}
+                @can('read users')
+                        <li class="nav-item">
+                    <a href="{{ route('users.index') }}"
+                        class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Users
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                @endcan
+
+                @can('read roles')
+                <li class="nav-item">
+                    <a href="{{ route('roles.index') }}"
+                        class="nav-link {{ request()->routeIs('roles.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-cog"></i>
+                        <p>
+                            Roles
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                @endcan
+
+                @can('read clients')
+                <li class="nav-item">
+                    <a href="{{ route('clients.index') }}"
+                        class="nav-link {{ request()->routeIs('clients.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Clients
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                @endcan
+
+                @can('read governorates')
                 <li class="nav-item">
                     <a href="{{ route('governorates.index') }}"
                         class="nav-link {{ request()->routeIs('governorates.*') ? 'active' : '' }}">
@@ -73,7 +113,9 @@
                         </p>
                     </a>
                 </li>
+                @endcan
 
+                @can('read cities')
                 <li class="nav-item">
                     <a href="{{ route('cities.index') }}"
                      class="nav-link {{ request()->routeIs('cities.*') ? 'active' : '' }}">
@@ -84,6 +126,9 @@
                         </p>
                     </a>
                 </li>
+                @endcan
+
+                @can('read categories')
                 <li class="nav-item">
                     <a href="{{ route('categories.index') }}"
                      class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}">
@@ -94,7 +139,9 @@
                         </p>
                     </a>
                 </li>
+                @endcan
 
+                @can('read posts')
                 <li class="nav-item">
                     <a href="{{ route('posts.index') }}"
                      class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">
@@ -105,16 +152,42 @@
                         </p>
                     </a>
                 </li>
+                @endcan
 
+                @can('read donations')
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('bloodtypes.*') ? 'active' : '' }}">
+                    <a href="{{ route('donations.index') }}"
+                     class="nav-link {{ request()->routeIs('donations.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tint"></i>
                         <p>
-                            Blood Types
+                            Donation Requests
                             {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>
+                @endcan
+                
+                @can('read messages')
+                <li class="nav-item">
+                    <a href="{{ route('messages.index') }}"
+                     class="nav-link {{ request()->routeIs('messages.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        <p>
+                            Clients Messages
+                            {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                @endcan
+                {{-- <li class="nav-item">
+                    <a href="#" class="nav-link {{ request()->routeIs('bloodtypes.*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tint"></i>
+                        <p>
+                            Blood Types
+                        </p>
+                    </a>
+                </li> --}}
+                
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

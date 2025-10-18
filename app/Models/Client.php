@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -62,7 +64,7 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class Client extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, HasFactory;
 
     protected $table = 'clients';
     public $timestamps = true;
@@ -71,6 +73,7 @@ class Client extends Authenticatable
         'phone',
         'password',
         'email',
+        'status',
         'date_of_birth',
         'blood_type_id',
         'last_donation_date',
@@ -79,6 +82,38 @@ class Client extends Authenticatable
         'reset_code',
         'reset_code_expires_at',
     ];
+
+    //check last donation date if null return ligal if there is date check if this date passed 3 months
+    public function getCanDonateAttribute ()
+    {
+        if (!$this->last_donation_date){
+            return true;
+        }
+
+        //convert date from db to object to deal with add subtract --- lte = less than or equal now
+        return Carbon::parse($this->last_donation_date)->addMonths(3)->lte(now());
+    }
+
+    public function getNextDonationDateAttribute(){
+        if (!$this->last_donation_date){
+            return null;
+        }
+
+        return Carbon::parse($this->last_donation_date)->addMonths(3);
+    }
+
+    //return badge 
+    public function getCanDonateBadgeAttribute()
+    {
+        if ($this->can_donate) {
+            return '<span class="badge badge-success">Eligible</span>';
+        }
+
+        return '<span class="badge badge-danger" data-toggle="tooltip" title="Next donation date: '
+        . $this->next_donation_date->format('Y-m-d') . '">
+        Not Eligible
+        </span>';
+    }
 
     public function setPasswordAttribute($value)
     {

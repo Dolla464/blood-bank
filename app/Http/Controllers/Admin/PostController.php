@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:read posts', ['only' => ['index']]);
+        $this->middleware('can:create posts', ['only' => ['create', 'store']]);
+        $this->middleware('can:update posts', ['only' => ['edit', 'update']]);
+        $this->middleware('can:delete posts', ['only' => ['destroy']]);
+    }
+    
+    
     /**
      * Display a listing of the resource.
      */
@@ -18,8 +27,8 @@ class PostController extends Controller
         $query = Post::with('category');
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
-        }   
-        $posts = $query->paginate(10);
+        }                               //to keep filter when go to next page
+        $posts = $query->paginate(10)->appends($request->query());
         $categories = Category::all();
         return view('admin.posts.posts', compact('posts', 'categories'));
     }

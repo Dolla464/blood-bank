@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:read profile', ['only' => ['index']]);
+        $this->middleware('can:update profile', ['only' => ['update']]);
+        $this->middleware('can:delete profile', ['only' => ['destroy']]);
+    }
+    
+    
     public function index($admin)
     {
         $admin = User::findOrFail($admin);
