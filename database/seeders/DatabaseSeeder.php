@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(PermissionsSeeder::class);
         $this->call(BloodTypeSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(GovernorateSeeder::class);

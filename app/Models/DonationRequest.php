@@ -57,6 +57,7 @@ class DonationRequest extends Model
         'patient_age',
         'blood_type_id',
         'bags_number',
+        'hospital_name',
         'hospital_address',
         'latitude',
         'longitude',

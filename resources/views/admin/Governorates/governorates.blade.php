@@ -44,7 +44,7 @@
                                         @if (request('edit') == $governorate->id && !request('add'))
                                             <td colspan="2">
                                                 <form
-                                                    action="{{ route('governorates.update', $governorate->id) }}?page={{ request()->query('page', 1) }}"
+                                                    action="{{ route('admin.governorates.update', $governorate->id) }}?page={{ request()->query('page', 1) }}"
                                                     method="POST" style="display:inline-flex; align-items:center;">
                                                     @csrf
                                                     @method('PUT')
@@ -55,7 +55,7 @@
                                                         aria-label="Save Governorate" data-toggle="tooltip" title="Save">
                                                         <i class="fas fa-check"></i>
                                                     </button>
-                                                    <a href="{{ route('governorates.index', array_merge(request()->query(), ['edit' => null])) }}"
+                                                    <a href="{{ route('admin.governorates.index', array_merge(request()->query(), ['edit' => null])) }}"
                                                         class="btn btn-sm btn-secondary ml-2 action-btn"
                                                         aria-label="Cancel Edit"
                                                         style="background-color:#6c757d;border-color:#6c757d;"
@@ -72,14 +72,14 @@
                                                     unset($query['add']); // شيل add=new من الرابط
                                                 @endphp
 
-                                                <a href="{{ route('governorates.index', array_merge(['edit' => $governorate->id], $query)) }}"
+                                                <a href="{{ route('admin.governorates.index', array_merge(['edit' => $governorate->id], $query)) }}"
                                                     class="btn btn-sm btn-primary edit-btn action-btn"
                                                     aria-label="Edit Governorate"
                                                     style="background-color:#3498db;border-color:#3498db;"
                                                     data-toggle="tooltip" title="Edit">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('governorates.destroy', $governorate->id) }}"
+                                                <form action="{{ route('admin.governorates.destroy', $governorate->id) }}"
                                                     method="POST" style="display:inline-block;">
                                                     @csrf
                                                     @method('DELETE')
@@ -181,7 +181,7 @@
                     row.className = 'text-center bg-warning';
                     row.innerHTML = `<td>--</td>
     <td colspan="2">
-        <form id="createGovernorateForm" action="{{ route('governorates.store') }}" method="POST" style="display:inline-flex; align-items:center;">
+        <form id="createGovernorateForm" action="{{ route('admin.governorates.store') }}" method="POST" style="display:inline-flex; align-items:center;">
             @csrf
             <input type='text' name='name' class='form-control mr-2' required placeholder='Governorate Name'>
             <button type='button' class='btn btn-sm btn-success create-btn action-btn' style='background-color:#27ae60;border-color:#27ae60;' data-toggle='tooltip' title='Create'>

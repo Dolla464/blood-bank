@@ -61,7 +61,7 @@
                                         <td>{{ $client->email }}</td>
 
                                         <td>
-                                            <form action="{{ route('clients.updateStatus', $client->id) }}" method="POST">
+                                            <form action="{{ route('admin.clients.updateStatus', $client->id) }}" method="POST">
                                                 @csrf
                                                 @method('PATCH')
 
@@ -97,7 +97,7 @@
                                         <td>
 
                                             <!-- Delete Button -->
-                                            <form action="{{ route('clients.destroy', $client->id) }}" method="POST"
+                                            <form action="{{ route('admin.clients.destroy', $client->id) }}" method="POST"
                                                 style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')

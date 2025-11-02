@@ -44,11 +44,11 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->save();
-        return redirect()->route('categories.index')->with('success', 'Category created successfully');
+        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully');
         $total = Category::count();
         $perPage = 10; // match paginate(10)
         $lastPage = ceil($total / $perPage);
-        return redirect()->route('categories.index', ['page' => $lastPage, 'add' => 'new'])->with('success', 'Category created successfully');
+        return redirect()->route('admin.categories.index', ['page' => $lastPage, 'add' => 'new'])->with('success', 'Category created successfully');
     }
 
     public function show(Category $category)
@@ -71,7 +71,7 @@ class CategoryController extends Controller
         $total = Category::count();
         $perPage = 10; // match paginate(10)
         $lastPage = ceil($total / $perPage);
-        return redirect()->route('categories.index', ['page' => $lastPage, 'edit' => $category->id])->with('success', 'Category updated successfully'); 
+        return redirect()->route('admin.categories.index', ['page' => $lastPage, 'edit' => $category->id])->with('success', 'Category updated successfully'); 
     }
 
     public function destroy(Request $request, Category $category)
@@ -80,6 +80,6 @@ class CategoryController extends Controller
         $total = Category::count();
         $perPage = 10; // match paginate(10)
         $lastPage = ceil($total / $perPage);
-        return redirect()->route('categories.index', ['page' => $lastPage])->with('success', 'Category deleted successfully');
+        return redirect()->route('admin.categories.index', ['page' => $lastPage])->with('success', 'Category deleted successfully');
     }
 }

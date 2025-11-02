@@ -71,7 +71,7 @@
                                             <td>{{ $donation->notes }}</td>
                                             <td>
                                                 <!-- Delete Button -->
-                                                <form action="{{ route('donations.destroy', $donation->id) }}"
+                                                <form action="{{ route('admin.donations.destroy', $donation->id) }}"
                                                     method="POST" style="display:inline-block;">
                                                     @csrf
                                                     @method('DELETE')

@@ -33,7 +33,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('password.email') }}" method="post">
+                <form action="{{ route('admin.password.email') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
@@ -60,10 +60,10 @@
                 </form>
 
                 <p class="mt-3 mb-1">
-                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('admin.login') }}">Login</a>
                 </p>
                 <p class="mb-0">
-                    <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+                    <a href="{{ route('admin.register') }}" class="text-center">Register a new membership</a>
                 </p>
             </div>
             <!-- /.login-card-body -->

@@ -45,7 +45,7 @@
                                         @if (request('edit') == $category->id && !request('add'))
                                             <td colspan="2">
                                                 <form
-                                                    action="{{ route('categories.update', $category->id) }}?page={{ request()->query('page', 1) }}"
+                                                    action="{{ route('admin.categories.update', $category->id) }}?page={{ request()->query('page', 1) }}"
                                                     method="POST" style="display:inline-flex; align-items:center;">
                                                     @csrf
                                                     @method('PUT')
@@ -56,7 +56,7 @@
                                                         aria-label="Save Category" data-toggle="tooltip" title="Save">
                                                         <i class="fas fa-check"></i>
                                                     </button>
-                                                    <a href="{{ route('categories.index', array_merge(request()->query(), ['edit' => null])) }}"
+                                                    <a href="{{ route('admin.categories.index', array_merge(request()->query(), ['edit' => null])) }}"
                                                         class="btn btn-sm btn-secondary ml-2 action-btn"
                                                         aria-label="Cancel Edit"
                                                         style="background-color:#6c757d;border-color:#6c757d;"
@@ -72,14 +72,14 @@
                                                     $query = request()->query();
                                                     unset($query['add']); // شيل add=new من الرابط
                                                 @endphp
-                                                <a href="{{ route('categories.index', array_merge(['edit' => $category->id], $query)) }}"
+                                                <a href="{{ route('admin.categories.index', array_merge(['edit' => $category->id], $query)) }}"
                                                     class="btn btn-sm btn-primary edit-btn action-btn"
                                                     aria-label="Edit Category"
                                                     style="background-color:#3498db;border-color:#3498db;"
                                                     data-toggle="tooltip" title="Edit">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('categories.destroy', $category->id) }}"
+                                                <form action="{{ route('admin.categories.destroy', $category->id) }}"
                                                     method="POST" style="display:inline-block;">
                                                     @csrf
                                                     @method('DELETE')
@@ -187,7 +187,7 @@
                 newRow.className = 'text-center bg-warning';
                 newRow.innerHTML = `<td>--</td>
                     <td colspan="2">
-                        <form id="createCategoryForm" action="{{ route('categories.store') }}" method="POST" style="display:inline-flex; align-items:center;">
+                        <form id="createCategoryForm" action="{{ route('admin.categories.store') }}" method="POST" style="display:inline-flex; align-items:center;">
                             @csrf
                             <input type="text" name="name" class="form-control mr-2" placeholder="Category Name" required>
                             <button type="button" class="btn btn-sm btn-success create-btn action-btn" aria-label="Save Category" data-toggle="tooltip" title="Create">

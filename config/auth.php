@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'client-web',
+        'passwords' => 'clients',
     ],
 
     /*
@@ -36,17 +36,19 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'admin' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'api' =>[
-            'driver'=>'sanctum',
-            'provider'=>'clients',
+
+        'client-web' => [
+            'driver' => 'session',
+            'provider' => 'clients',
         ],
-        'client-web' =>[
-            'driver'=>'session',
-            'provider'=>'clients',
+
+        'api' => [
+            'driver' => 'sanctum',
+            'provider' => 'clients',
         ],
     ],
 
@@ -105,6 +107,12 @@ return [
 
     'passwords' => [
         'users' => [
+            'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,

@@ -91,7 +91,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>Edit Profile</span>
                         <div class="ml-auto">
-                            <form id="deleteUserForm" method="POST" action="{{ route('admin.delete', $admin->id) }}"
+                            <form id="deleteUserForm" method="POST" action="{{ route('admin.profile.delete', $admin->id) }}"
                                 style="margin:0;">
                                 @csrf
                                 @method('DELETE')
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="editProfileForm" method="POST" action="{{ route('profile.edit', $admin->id) }}"
+                        <form id="editProfileForm" method="POST" action="{{ route('admin.profile.edit', $admin->id) }}"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')

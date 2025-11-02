@@ -15,8 +15,16 @@ class PermissionsSeeder extends Seeder
     public function run(): void
     {
         Permission::query()->delete();
-        $role = Role::updateOrCreate([
+        
+        // Create admin role
+        $adminRole = Role::updateOrCreate([
             'name' => 'admin',
+            'guard_name' => 'web',
+        ]);
+        
+        // Create user role
+        $userRole = Role::updateOrCreate([
+            'name' => 'user',
             'guard_name' => 'web',
         ]);
         $permissions = [
@@ -95,7 +103,7 @@ class PermissionsSeeder extends Seeder
                     'guard_name' => 'web',
                     'group' => $group,
                 ]);
-                $role->givePermissionTo($permission);
+                $adminRole->givePermissionTo($permission);
             }
         }
     }

@@ -71,7 +71,7 @@
             <button type="submit" class="btn btn-primary save-btn">
                 {{ isset($post) ? 'Update' : 'Create' }}
             </button>
-            <a href="{{ route('posts.index') }}" class="btn btn-secondary">Cancel</a>
+            <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Cancel</a>
         </div>
     </div>
 </div>

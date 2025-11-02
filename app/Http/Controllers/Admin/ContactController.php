@@ -74,6 +74,6 @@ class ContactController extends Controller
         $message = Contact::findOrFail($id);
         $message->delete();
 
-        return redirect()->route('messages.index')->with('success', 'Message Deleted Successfully');
+        return redirect()->route('admin.messages.index')->with('success', 'Message Deleted Successfully');
     }
 }

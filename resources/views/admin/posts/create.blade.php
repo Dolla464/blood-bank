@@ -28,7 +28,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             @include('admin.posts._form')

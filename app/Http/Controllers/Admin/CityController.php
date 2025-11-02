@@ -50,7 +50,7 @@ class CityController extends Controller
         $perPage = 10; // match paginate(10)
         $lastPage = ceil($total / $perPage);
 
-        return redirect()->route('cities.index', ['page' => $lastPage, 'add' => 'new'])->with('success', 'City created successfully');
+        return redirect()->route('admin.cities.index', ['page' => $lastPage, 'add' => 'new'])->with('success', 'City created successfully');
     }
 
     public function edit($id)
@@ -73,7 +73,7 @@ class CityController extends Controller
         $city->save();
 
         $page = $request->query('page', 1);
-        return redirect()->route('cities.index', ['page' => $page])->with('success', 'City updated successfully');
+        return redirect()->route('admin.cities.index', ['page' => $page])->with('success', 'City updated successfully');
     }
 
     public function destroy($id)
@@ -82,6 +82,6 @@ class CityController extends Controller
         $city->delete();
 
         $page = request()->query('page', 1);
-        return redirect()->route('cities.index', ['page' => $page])->with('success', 'City deleted successfully');
+        return redirect()->route('admin.cities.index', ['page' => $page])->with('success', 'City deleted successfully');
     }
 }

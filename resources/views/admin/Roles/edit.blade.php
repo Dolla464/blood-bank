@@ -28,7 +28,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form method="POST" action="{{ route('roles.update', $role->id) }}">
+                        <form method="POST" action="{{ route('admin.roles.update', $role->id) }}">
                             @method('PUT')
                             @csrf
                             <div class="row">
@@ -122,7 +122,7 @@
                                 <div class="col-sm-12">
                                     <div class="card-footer mt-2">
                                         <button type="submit" class="btn btn-primary save-btn">Update</button>
-                                        <a href="{{ route('roles.index') }}" class="btn btn-secondary">Cancel</a>
+                                        <a href="{{ route('admin.roles.index') }}" class="btn btn-secondary">Cancel</a>
                                     </div>
                                 </div>
                             </div>

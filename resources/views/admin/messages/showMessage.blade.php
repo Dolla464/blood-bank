@@ -51,7 +51,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <!-- Delete Button -->
-                                    <form action="{{ route('messages.destroy', $message->id) }}" method="POST"
+                                    <form action="{{ route('admin.messages.destroy', $message->id) }}" method="POST"
                                         style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')

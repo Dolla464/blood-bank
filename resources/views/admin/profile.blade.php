@@ -25,7 +25,7 @@
                                 <td>{{ $admin->role ?? 'Admin' }}</td>
                             </tr>
                         </table>
-                        <a href="{{ route('profile.edit', $admin->id) }}" class="btn btn-primary">Edit Profile</a>
+                        <a href="{{ route('admin.profile.edit', $admin->id) }}" class="btn btn-primary">Edit Profile</a>
                     </div>
                 </div>
             </div>

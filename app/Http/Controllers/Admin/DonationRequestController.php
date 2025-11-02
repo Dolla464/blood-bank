@@ -103,6 +103,6 @@ class DonationRequestController extends Controller
         $donation = DonationRequest::findOrFail($id);
         $donation->delete();
 
-        return redirect()->route('donations.index')->with('success', 'Donation Request Deleted Successfully');
+        return redirect()->route('admin.donations.index')->with('success', 'Donation Request Deleted Successfully');
     }
 }

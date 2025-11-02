@@ -44,7 +44,7 @@ class RoleController extends Controller
         $data['guard_name'] = 'web';
         $role = Role::create($data);
         $role->givePermissionTo($request->permissions);
-        return redirect()->route('roles.index')->with('success','Role Created Successfully');
+        return redirect()->route('admin.roles.index')->with('success','Role Created Successfully');
     }
 
     /**
@@ -76,7 +76,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $role->update($data);
         $role->syncPermissions($request->permissions);
-        return redirect()->route('roles.index')->with('success', 'Role updated successfully');
+        return redirect()->route('admin.roles.index')->with('success', 'Role updated successfully');
     }
 
     /**
@@ -86,6 +86,6 @@ class RoleController extends Controller
     {
         $role = Role::findOrFail($id);
         $role->delete();
-        return redirect()->route('roles.index')->with('success', 'Role deleted successfully');
+        return redirect()->route('admin.roles.index')->with('success', 'Role deleted successfully');
     }
 }

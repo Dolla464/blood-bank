@@ -28,6 +28,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('governorates', [GeneralController::class, 'governorates']);
     Route::get('cities', [GeneralController::class, 'cities']);
     Route::get('settings', [GeneralController::class, 'settings']);
+    Route::get('governorate-by-city', [GeneralController::class, 'getGovernorateByCity']);
     Route::get('posts', [PostController::class, 'index']);
     Route::get('posts/{post}', [PostController::class, 'showPost']);
 

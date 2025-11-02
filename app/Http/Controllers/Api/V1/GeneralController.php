@@ -54,5 +54,26 @@ class GeneralController extends Controller
         return $this->apiDataResponse($data);
     }
 
+    public function getGovernorateByCity(Request $request)
+    {
+        $cityId = $request->input('city_id');
+        
+        if (!$cityId) {
+            return $this->apiErrorResponse('City ID is required');
+        }
+
+        $city = City::with('governorate')->find($cityId);
+        
+        if (!$city) {
+            return $this->apiErrorResponse('City not found');
+        }
+
+        $data = [
+            'governorate' => $city->governorate
+        ];
+        
+        return $this->apiDataResponse($data);
+    }
+
     
 }

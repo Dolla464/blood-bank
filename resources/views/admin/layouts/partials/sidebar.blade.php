@@ -2,7 +2,7 @@
     <!-- Custom Sidebar CSS -->
     <link rel="stylesheet" href="{{ asset('adminlte/custom-sidebar.css') }}">
     <!-- Brand Logo -->
-    <a href="{{ route('dashboard') }}" class="brand-link">
+    <a href="{{ route('admin.dashboard') }}" class="brand-link">
         <img src="{{ asset('adminlte') }}/img/icon.png" alt="BloodBank Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
         <span class="brand-text font-weight-light">BloodBank</span>
@@ -12,13 +12,15 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            @if (Auth::guard('admin')->check())
             <div class="image">
-                <img src="{{ Auth::user()->profile_image ? asset(Auth::user()->profile_image) : asset('adminlte/img/user2-160x160.jpg') }}"
+                <img src="{{ Auth::guard('admin')->user()->profile_image ? asset(Auth::guard('admin')->user()->profile_image) : asset('adminlte/img/user2-160x160.jpg') }}"
                     class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{ route('admin.profile', auth()->user()->id) }}"" class="d-block">{{ Auth::user()->name }}</a>
+                <a href="{{ route('admin.profile', auth()->guard('admin')->user()->id) }}"" class="d-block">{{ Auth::guard('admin')->user()->name }}</a>
             </div>
+            @endif
         </div>
 
         <!-- SidebarSearch Form -->
@@ -64,120 +66,120 @@
                             </ul>
                         </li> --}}
                 @can('read users')
-                        <li class="nav-item">
-                    <a href="{{ route('users.index') }}"
-                        class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Users
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.users.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                Users
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
                 @endcan
 
                 @can('read roles')
-                <li class="nav-item">
-                    <a href="{{ route('roles.index') }}"
-                        class="nav-link {{ request()->routeIs('roles.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user-cog"></i>
-                        <p>
-                            Roles
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.roles.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.roles.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user-cog"></i>
+                            <p>
+                                Roles
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
                 @endcan
 
                 @can('read clients')
-                <li class="nav-item">
-                    <a href="{{ route('clients.index') }}"
-                        class="nav-link {{ request()->routeIs('clients.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Clients
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.clients.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.clients.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                Clients
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
                 @endcan
 
                 @can('read governorates')
-                <li class="nav-item">
-                    <a href="{{ route('governorates.index') }}"
-                        class="nav-link {{ request()->routeIs('governorates.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-map-marked-alt"></i>
-                        <p>
-                            Governorates
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.governorates.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.governorates.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-map-marked-alt"></i>
+                            <p>
+                                Governorates
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
                 @endcan
 
                 @can('read cities')
-                <li class="nav-item">
-                    <a href="{{ route('cities.index') }}"
-                     class="nav-link {{ request()->routeIs('cities.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-city"></i>
-                        <p>
-                            Cities
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.cities.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.cities.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-city"></i>
+                            <p>
+                                Cities
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
                 @endcan
 
                 @can('read categories')
-                <li class="nav-item">
-                    <a href="{{ route('categories.index') }}"
-                     class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tags"></i>
-                        <p>
-                            Categories
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.categories.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tags"></i>
+                            <p>
+                                Categories
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
                 @endcan
 
                 @can('read posts')
-                <li class="nav-item">
-                    <a href="{{ route('posts.index') }}"
-                     class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-newspaper"></i>
-                        <p>
-                            Posts
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.posts.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-newspaper"></i>
+                            <p>
+                                Posts
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
                 @endcan
 
                 @can('read donations')
-                <li class="nav-item">
-                    <a href="{{ route('donations.index') }}"
-                     class="nav-link {{ request()->routeIs('donations.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tint"></i>
-                        <p>
-                            Donation Requests
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.donations.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.donations.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tint"></i>
+                            <p>
+                                Donation Requests
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
                 @endcan
-                
+
                 @can('read messages')
-                <li class="nav-item">
-                    <a href="{{ route('messages.index') }}"
-                     class="nav-link {{ request()->routeIs('messages.*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-envelope"></i>
-                        <p>
-                            Clients Messages
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.messages.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.messages.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-envelope"></i>
+                            <p>
+                                Clients Messages
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
                 @endcan
                 {{-- <li class="nav-item">
                     <a href="#" class="nav-link {{ request()->routeIs('bloodtypes.*') ? 'active' : '' }}">
@@ -187,7 +189,7 @@
                         </p>
                     </a>
                 </li> --}}
-                
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -70,7 +70,7 @@ class PostController extends Controller
 
         $posts = Post::paginate(10);
         $lastPage = $posts->lastPage();
-        return redirect()->route('posts.index', ['page' => $lastPage])->with('success', 'Post updated successfully');
+        return redirect()->route('admin.posts.index', ['page' => $lastPage])->with('success', 'Post updated successfully');
     }
 
     /**
@@ -127,7 +127,7 @@ class PostController extends Controller
 
         $posts = Post::paginate(10);
         $lastPage = $posts->lastPage();
-        return redirect()->route('posts.index', ['page' => $lastPage, 'edit' => $post->id])->with('success', 'Post updated successfully');
+        return redirect()->route('admin.posts.index', ['page' => $lastPage, 'edit' => $post->id])->with('success', 'Post updated successfully');
     }
 
     /**
@@ -138,6 +138,6 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->delete();
 
-        return redirect()->route('posts.index')->with('success', 'Post Deleted Successfully');
+        return redirect()->route('admin.posts.index')->with('success', 'Post Deleted Successfully');
     }
 }

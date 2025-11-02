@@ -25,7 +25,7 @@
                     <span class="info-box-icon bg-info"><i class="far fa-user"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Clients</span>
+                        <span class="info-box-text"><a href="{{ route('admin.users.index') }}">Clients</a></span>
                         <span class="info-box-number">{{ number_format($clientsCount) }}</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -39,7 +39,7 @@
                 <div class="info-box">
                     <span class="info-box-icon bg-danger"><i class="fas fa-hand-holding-medical"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Donation Requsets</span>
+                        <span class="info-box-text"><a href="{{ route('admin.donations.index') }}">Donation Requsets</a></span>
                         <span class="info-box-number">{{ number_format($donationsCount) }}</span>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 <div class="info-box">
                     <span class="info-box-icon bg-warning"><i class="fas fa-city"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Cities</span>
+                        <span class="info-box-text"><a href="{{ route('admin.cities.index') }}">Cities</a></span>
                         <span class="info-box-number">{{ number_format($citiesCount) }}</span>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                 <div class="info-box">
                     <span class="info-box-icon bg-primary"><i class="fas fa-map-marked-alt"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Governorates</span>
+                        <span class="info-box-text"><a href="{{ route('admin.governorates.index') }}">Governorates</a></span>
                         <span class="info-box-number">{{ number_format($governoratesCount) }}</span>
                     </div>
                 </div>

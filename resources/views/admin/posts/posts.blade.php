@@ -24,13 +24,13 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <h4 class="mb-0"><i class="fas fa-newspaper text-danger"></i> Posts List</h4>
-                        <a href="{{ route('posts.create') }}" id="addPostBtn" class="btn btn-success action-btn" aria-label="Add New Post"
+                        <a href="{{ route('admin.posts.create') }}" id="addPostBtn" class="btn btn-success action-btn" aria-label="Add New Post"
                             style="background-color:#27ae60;border-color:#27ae60;" data-toggle="tooltip" title="Add New">
                             <i class="fas fa-plus"></i>
                         </a>
                     </div>
                     <div class="card-body">
-                        <form method="GET" action="{{ route('posts.index') }}" class="mb-4">
+                        <form method="GET" action="{{ route('admin.posts.index') }}" class="mb-4">
                             <div class="row justify-content-center">
                                 <div class="col-md-8">
                                     <div class="input-group m-auto">
@@ -48,7 +48,7 @@
                                             @endforeach
                                         </select>
                                         @if (request('category_id'))
-                                            <a href="{{ route('posts.index') }}" class="btn btn-outline-danger m-auto">
+                                            <a href="{{ route('admin.posts.index') }}" class="btn btn-outline-danger m-auto">
                                                 Reset
                                             </a>
                                         @endif
@@ -86,7 +86,7 @@
                                             <td>{{ $post->category->name }}</td>
                                             <td>
                                                 <!-- Edit Button -->
-                                                <a href="{{ route('posts.edit', $post->id) }}"
+                                                <a href="{{ route('admin.posts.edit', $post->id) }}"
                                                     class="btn btn-sm btn-primary edit-btn action-btn"
                                                     aria-label="Edit Post"
                                                     style="background-color:#3498db;border-color:#3498db;"
@@ -95,7 +95,7 @@
                                                 </a>
 
                                                 <!-- Delete Button -->
-                                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
+                                                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST"
                                                     style="display:inline-block;">
                                                     @csrf
                                                     @method('DELETE')

@@ -27,7 +27,7 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
 
-                <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('website.register') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="text" name="name" value="{{ old('name') }}"
@@ -141,7 +141,7 @@
         </a>
       </div> --}}
 
-                <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
+                <a href="{{ route('website.login') }}" class="text-center">I already have a membership</a>
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->

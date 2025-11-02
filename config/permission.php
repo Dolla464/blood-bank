@@ -2,6 +2,10 @@
 
 return [
 
+    'defaults' => [
+        'guard' => 'admin', // ← هنا نخلي Spatie يستخدم الـ guard الخاص بالأدمن
+    ],
+
     'models' => [
 
         /*

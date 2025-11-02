@@ -123,6 +123,6 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
         $client->delete();
 
-        return redirect()->route('clients.index')->with('success', 'Client Deleted Successfully');
+        return redirect()->route('admin.clients.index')->with('success', 'Client Deleted Successfully');
     }
 }

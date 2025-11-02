@@ -27,7 +27,7 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">{{ __('Reset Password') }}</p>
 
-                <form action="{{ route('password.update') }}" method="post">
+                <form action="{{ route('admin.password.update') }}" method="post">
                     @csrf
                     <input type="hidden" name="token" value="{{ $token }}">
                     <div class="input-group mb-3">
@@ -89,7 +89,7 @@
                 </form>
 
                 <p class="mt-3 mb-1">
-                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('admin.login') }}">Login</a>
                 </p>
             </div>
             <!-- /.login-card-body -->

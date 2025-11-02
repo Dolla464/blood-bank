@@ -35,7 +35,7 @@
                                     </h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="GET" action="{{ route('clients.index') }}">
+                                    <form method="GET" action="{{ route('admin.clients.index') }}">
                                         <div class="form-row">
 
                                             {{-- Blood Type --}}
@@ -105,7 +105,7 @@
                                         {{-- Reset Button --}}
                                         @if (request()->hasAny(['blood_type_id', 'governorate_id', 'city_id']))
                                             <div class="text-right">
-                                                <a href="{{ route('clients.index') }}" class="btn btn-outline-danger">
+                                                <a href="{{ route('admin.clients.index') }}" class="btn btn-outline-danger">
                                                     <i class="fas fa-undo mr-1"></i> Reset Filters
                                                 </a>
                                             </div>
@@ -154,7 +154,7 @@
 
                                         <td>
                                             <!-- Edit Button -->
-                                            <a href="{{ route('clients.show', $client->id) }}"
+                                            <a href="{{ route('admin.clients.show', $client->id) }}"
                                                 class="btn btn-sm btn-primary edit-btn action-btn" aria-label="Show Client"
                                                 style="background-color:#27a3ae;border-color:#065860;" data-toggle="tooltip"
                                                 title="Show">
@@ -162,7 +162,7 @@
                                             </a>
 
                                             <!-- Delete Button -->
-                                            <form action="{{ route('clients.destroy', $client->id) }}" method="POST"
+                                            <form action="{{ route('admin.clients.destroy', $client->id) }}" method="POST"
                                                 style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')

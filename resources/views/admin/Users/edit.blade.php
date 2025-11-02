@@ -28,7 +28,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.users.update', $user->id) }}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="row">
@@ -104,7 +104,7 @@
                             <div class="col-sm-12">
                                 <div class="card-footer mt-2">
                                     <button type="submit" class="btn btn-primary save-btn">Update</button>
-                                    <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancel</a>
+                                    <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Cancel</a>
                                 </div>
                             </div>
                         </div>

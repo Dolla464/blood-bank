@@ -10,9 +10,8 @@ class ProfileController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:read profile', ['only' => ['index']]);
-        $this->middleware('can:update profile', ['only' => ['update']]);
-        $this->middleware('can:delete profile', ['only' => ['destroy']]);
+        // Profile routes are already protected by auth:admin and role:admin middleware in routes
+        // Admins should be able to view/edit profiles without additional permissions
     }
     
     
@@ -53,6 +52,6 @@ class ProfileController extends Controller
     {
         $admin = User::findOrFail($admin);
         $admin->delete();
-        return redirect()->route('login')->with('success', 'Admin profile deleted successfully.');
+        return redirect()->route('admin.login')->with('success', 'Admin profile deleted successfully.');
     }
 }

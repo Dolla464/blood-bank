@@ -41,7 +41,7 @@ class GovernorateController extends Controller
         $total = Governorate::count();
         $perPage = 10; // match paginate(10)
         $lastPage = ceil($total / $perPage);
-        return redirect()->route('governorates.index', ['page' => $lastPage, 'add' => 'new'])->with('success', 'Governorate created successfully');
+        return redirect()->route('admin.governorates.index', ['page' => $lastPage, 'add' => 'new'])->with('success', 'Governorate created successfully');
     }
 
     public function edit(Governorate $governorate)
@@ -57,13 +57,13 @@ class GovernorateController extends Controller
         $governorate->name = $request->name;
         $governorate->save();
         $page = $request->query('page', 1);
-        return redirect()->route('governorates.index', ['page' => $page])->with('success', 'Governorate updated successfully');
+        return redirect()->route('admin.governorates.index', ['page' => $page])->with('success', 'Governorate updated successfully');
     }
 
     public function destroy(Request $request, Governorate $governorate)
     {
         $governorate->delete();
         $page = $request->query('page', 1);
-        return redirect()->route('governorates.index', ['page' => $page])->with('success', 'Governorate deleted successfully');
+        return redirect()->route('admin.governorates.index', ['page' => $page])->with('success', 'Governorate deleted successfully');
     }
 }

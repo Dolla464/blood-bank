@@ -29,7 +29,7 @@
                         </button>
                     </div>
                     <div class="card-body">
-                        <form method="GET" action="{{ route('cities.index') }}" class="mb-4">
+                        <form method="GET" action="{{ route('admin.cities.index') }}" class="mb-4">
                             <div class="row justify-content-center">
                                 <div class="col-md-8">
                                     <div class="input-group m-auto">
@@ -47,7 +47,7 @@
                                             @endforeach
                                         </select>
                                         @if (request('governorate_id'))
-                                            <a href="{{ route('cities.index') }}" class="btn btn-outline-danger m-auto">
+                                            <a href="{{ route('admin.cities.index') }}" class="btn btn-outline-danger m-auto">
                                                 Reset
                                             </a>
                                         @endif
@@ -71,7 +71,7 @@
                                         @if (request('edit') == $city->id && !request('add'))
                                             <td colspan="3">
                                                 <form
-                                                    action="{{ route('cities.update', $city->id) }}?page={{ request()->query('page', 1) }}"
+                                                    action="{{ route('admin.cities.update', $city->id) }}?page={{ request()->query('page', 1) }}"
                                                     method="POST" style="display:inline-flex; align-items:center;">
                                                     @csrf
                                                     @method('PUT')
@@ -91,7 +91,7 @@
                                                         aria-label="Save City" data-toggle="tooltip" title="Save">
                                                         <i class="fas fa-check"></i>
                                                     </button>
-                                                    <a href="{{ route('cities.index', array_merge(request()->query(), ['edit' => null])) }}"
+                                                    <a href="{{ route('admin.cities.index', array_merge(request()->query(), ['edit' => null])) }}"
                                                         class="btn btn-sm btn-secondary ml-2 action-btn"
                                                         aria-label="Cancel Edit"
                                                         style="background-color:#6c757d;border-color:#6c757d;"
@@ -109,14 +109,14 @@
                                                     unset($query['add']); //  شيل add من اللينك
                                                 @endphp
 
-                                                <a href="{{ route('cities.index', array_merge(['edit' => $city->id], $query)) }}"
+                                                <a href="{{ route('admin.cities.index', array_merge(['edit' => $city->id], $query)) }}"
                                                     class="btn btn-sm btn-primary edit-btn action-btn"
                                                     aria-label="Edit City"
                                                     style="background-color:#3498db;border-color:#3498db;"
                                                     data-toggle="tooltip" title="Edit">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('cities.destroy', $city->id) }}" method="POST"
+                                                <form action="{{ route('admin.cities.destroy', $city->id) }}" method="POST"
                                                     style="display:inline-block;">
                                                     @csrf
                                                     @method('DELETE')
@@ -219,7 +219,7 @@
                     newRow.className = 'text-center bg-warning';
                     newRow.innerHTML = `<td>--</td>
                         <td colspan="3">
-                            <form id="createCityForm" action="{{ route('cities.store') }}" method="POST" style="display:inline-flex; align-items:center;">
+                            <form id="createCityForm" action="{{ route('admin.cities.store') }}" method="POST" style="display:inline-flex; align-items:center;">
                                 @csrf
                                 <input type="text" name="name" class="form-control mr-2" placeholder="City Name" required>
                                 <select name="governorate_id" class="form-control mr-2" required>

@@ -47,7 +47,7 @@
 
                                         <td>
                                             <!-- Edit Button -->
-                                            <a href="{{ route('messages.show', $message->id) }}"
+                                            <a href="{{ route('admin.messages.show', $message->id) }}"
                                                 class="btn btn-sm btn-primary edit-btn action-btn" aria-label="Show Message"
                                                 style="background-color:#27a3ae;border-color:#065860;" data-toggle="tooltip"
                                                 title="Show">
@@ -55,7 +55,7 @@
                                             </a>
 
                                             <!-- Delete Button -->
-                                            <form action="{{ route('messages.destroy', $message->id) }}" method="POST"
+                                            <form action="{{ route('admin.messages.destroy', $message->id) }}" method="POST"
                                                 style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')

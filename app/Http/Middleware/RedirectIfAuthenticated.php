@@ -21,7 +21,15 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                // 👇 هنا نوجّه كل مستخدم حسب نوعه
+                switch ($guard) {
+                    case 'admin':
+                        return redirect()->route('admin.dashboard'); // غيّر route حسب اسم لوحة التحكم عندك
+                    case 'client-web':
+                        return redirect()->route('client.home'); // أو أي صفحة رئيسية للمستخدم
+                    default:
+                        return redirect(RouteServiceProvider::HOME);
+                }
             }
         }
 
